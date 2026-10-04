@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Probability and Statistics - Final</title>
+  <meta name="description" content="Probability and Statistics study hub covering ANOVA, Chi-square, Nonparametric Tests, Correlation, and Regression.">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <header class="topbar">
+    <div class="container topbar-container">
+      <a href="#home" class="brand-link" aria-label="Probability and Statistics Final Portal">
+        <div class="brand-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">Probability &amp; Statistics</span>
+          <span class="brand-subtitle">Final Portal</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#home" class="nav-link">หน้าหลัก</a>
+        <a href="#chapters" class="nav-link">บทเรียนทั้งหมด</a>
+        <a href="#quick-review" class="nav-link">สรุปหัวข้อสำคัญ</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <!-- Theme Dropdown -->
+        <div class="theme-dropdown" id="theme-dropdown-container">
+          <button type="button" class="theme-btn" id="theme-toggle-btn" aria-expanded="false" aria-haspopup="true" aria-label="เปลี่ยนธีมการแสดงผล">
+            <span id="theme-icon-slot" class="theme-icon-slot">
+              <!-- Rendered via JS based on active theme -->
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </span>
+            <span id="theme-label-slot">ระบบ</span>
+          </button>
+
+          <div class="theme-menu" id="theme-menu" role="menu">
+            <button type="button" class="theme-option" data-theme-val="light" role="menuitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <span>สว่าง (Light)</span>
+            </button>
+            <button type="button" class="theme-option" data-theme-val="dark" role="menuitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <span>มืด (Dark)</span>
+            </button>
+            <button type="button" class="theme-option" data-theme-val="system" role="menuitem">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+              <span>ตามระบบ (System)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-toggle-btn" id="mobile-toggle-btn" aria-expanded="false" aria-label="เปิดเมนูการนำทาง">
+          <svg class="icon-menu" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div class="mobile-drawer" id="mobile-drawer">
+      <a href="#home" class="mobile-nav-link">หน้าหลัก</a>
+      <a href="#chapters" class="mobile-nav-link">บทเรียนทั้งหมด</a>
+      <a href="#quick-review" class="mobile-nav-link">สรุปหัวข้อสำคัญ</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+      <div class="container hero-container">
+        <div class="eyebrow-badge">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+          </svg>
+          <span class="eyebrow">PROBABILITY &amp; STATISTICS</span>
+        </div>
+
+        <h1 class="hero-title">Probability and Statistics - Final</h1>
+        <h2 class="hero-subtitle">รวมเนื้อหาและเครื่องมือทบทวน ตั้งแต่บทที่ 5 พาร์ท 2 ถึงบทที่ 7</h2>
+        <p class="hero-desc">
+          ระบบรวบรวมบทเรียน Probability &amp; Statistics สำหรับทบทวนเนื้อหาและเข้าสู่เว็บไซต์การเรียนรู้ของแต่ละบท
+        </p>
+
+        <div class="hero-actions">
+          <a href="#chapters" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>เริ่มทบทวนบทเรียน</span>
+          </a>
+          <a href="#chapters" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span>ดูทั้งหมด 3 บท</span>
+          </a>
+        </div>
+
+        <!-- Course Overview Section -->
+        <div class="overview-grid">
+          <div class="overview-card">
+            <div class="overview-num">3 Chapters</div>
+            <div class="overview-label">บทที่ 5 Part 2, 6, 7</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-num">1 Study Hub</div>
+            <div class="overview-label">ศูนย์กลางการเข้าสู่บทเรียน</div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-num">Probability &amp; Statistics</div>
+            <div class="overview-label">ANOVA • Nonparametric • Regression</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter Cards Section -->
+    <section class="section chapters-section" id="chapters">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">COURSE MODULES</span>
+          <h2 class="section-title">บทเรียนทั้งหมด</h2>
+          <p class="section-desc">เลือกบทที่ต้องการเพื่อเข้าสู่เว็บไซต์เรียนรู้ของแต่ละบท</p>
+        </div>
+
+        <div class="chapter-grid">
+          <!-- Card 1: Chapter 5 Part 2 -->
+          <article class="chapter-card">
+            <div class="card-header">
+              <span class="chapter-badge">บทที่ 5 Part 2</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="chapter-title">ANOVA and Chi-square</h3>
+            <div class="chapter-thai-topic">การวิเคราะห์ความแปรปรวนและการทดสอบไคสแควร์</div>
+            <p class="chapter-desc">
+              การเปรียบเทียบค่าเฉลี่ยหลายกลุ่มด้วย ANOVA และการทดสอบความเป็นอิสระและความสอดคล้องของข้อมูลเชิงกลุ่มด้วย Chi-square Tests
+            </p>
+
+            <div class="tags-container">
+              <span class="tag">ANOVA</span>
+              <span class="tag">Chi-square</span>
+              <span class="tag">Goodness of Fit</span>
+              <span class="tag">Independence Test</span>
+            </div>
+
+            <div class="card-action">
+              <a href="https://probability-statistics-study-dashbo.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                <span>เข้าสู่บทเรียน →</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 2: Chapter 6 -->
+          <article class="chapter-card">
+            <div class="card-header">
+              <span class="chapter-badge">บทที่ 6</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="chapter-title">Nonparametric Tests</h3>
+            <div class="chapter-thai-topic">การทดสอบสมมติฐานแบบไม่อิงพารามิเตอร์</div>
+            <p class="chapter-desc">
+              การวิเคราะห์ทางสถิติเมื่อข้อมูลไม่เป็นไปตามข้อตกลงเรื่องการแจกแจงปกติ เช่น Wilcoxon Signed-Rank, Mann-Whitney U และ Kruskal-Wallis
+            </p>
+
+            <div class="tags-container">
+              <span class="tag">Nonparametric</span>
+              <span class="tag">Hypothesis Testing</span>
+              <span class="tag">Wilcoxon</span>
+              <span class="tag">Mann-Whitney</span>
+            </div>
+
+            <div class="card-action">
+              <a href="https://nonparametric-tests.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                <span>เข้าสู่บทเรียน →</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 3: Chapter 7 -->
+          <article class="chapter-card">
+            <div class="card-header">
+              <span class="chapter-badge">บทที่ 7</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="chapter-title">Correlation and Regression</h3>
+            <div class="chapter-thai-topic">การวิเคราะห์สหสัมพันธ์และการถดถอยเชิงเส้น</div>
+            <p class="chapter-desc">
+              การวัดขนาดและทิศทางความสัมพันธ์เชิงเส้นด้วย Pearson Correlation และการสร้างแบบจำลองสมการถดถอย Simple / Multiple Linear Regression
+            </p>
+
+            <div class="tags-container">
+              <span class="tag">Correlation</span>
+              <span class="tag">Regression</span>
+              <span class="tag">Pearson r</span>
+              <span class="tag">R-Squared</span>
+            </div>
+
+            <div class="card-action">
+              <a href="https://correlation-and-linear-regression.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+                <span>เข้าสู่บทเรียน →</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Review Section -->
+    <section class="section quick-review-section" id="quick-review">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">QUICK TOPIC MAP</span>
+          <h2 class="section-title">สรุปหัวข้อสำคัญ (Quick Review)</h2>
+          <p class="section-desc">แผนผังหัวข้อหลักของแต่ละบทเรียนสำหรับการทบทวนอย่างรวดเร็ว</p>
+        </div>
+
+        <div class="review-grid">
+          <!-- Block 1: ANOVA & Chi-square -->
+          <div class="review-card">
+            <div class="review-badge">บทที่ 5 Part 2</div>
+            <h3 class="review-title">ANOVA &amp; Chi-square</h3>
+            <ul class="review-list">
+              <li>
+                <strong>One-way ANOVA:</strong> เปรียบเทียบค่าเฉลี่ยประชากรตั้งแต่ 3 กลุ่มขึ้นไปผ่านค่า F-distribution
+              </li>
+              <li>
+                <strong>Hypothesis Testing:</strong> ตั้งสมมติฐาน H₀: μ₁ = μ₂ = ... = μₖ และคำนวณตาราง ANOVA
+              </li>
+              <li>
+                <strong>Chi-square Goodness of Fit:</strong> ทดสอบการแจกแจงของข้อมูลตัวแปรเดี่ยวกับสัดส่วนที่คาดหวัง
+              </li>
+              <li>
+                <strong>Chi-square Independence:</strong> ทดสอบความสัมพันธ์ระหว่างตัวแปรเชิงคุณภาพใน Contingency Table
+              </li>
+            </ul>
+          </div>
+
+          <!-- Block 2: Nonparametric Tests -->
+          <div class="review-card">
+            <div class="review-badge">บทที่ 6</div>
+            <h3 class="review-title">Nonparametric Tests</h3>
+            <ul class="review-list">
+              <li>
+                <strong>Wilcoxon Signed-Rank Test:</strong> ทดสอบ 2 กลุ่มตัวอย่างไม่อิสระ (Paired Samples)
+              </li>
+              <li>
+                <strong>Mann-Whitney U Test:</strong> ทดสอบ 2 กลุ่มตัวอย่างอิสระ เพื่อเปรียบเทียบตำแหน่งการแจกแจง
+              </li>
+              <li>
+                <strong>Kruskal-Wallis H Test:</strong> ทางเลือกไม่อิงพารามิเตอร์สำหรับเปรียบเทียบ 3 กลุ่มขึ้นไป (แทน ANOVA)
+              </li>
+              <li>
+                <strong>Friedman Test:</strong> ทดสอบข้อมูลแบบวัดซ้ำหลายช่วงเวลาสำหรับตัวอย่างกลุ่มเดิม
+              </li>
+            </ul>
+          </div>
+
+          <!-- Block 3: Correlation & Regression -->
+          <div class="review-card">
+            <div class="review-badge">บทที่ 7</div>
+            <h3 class="review-title">Correlation &amp; Regression</h3>
+            <ul class="review-list">
+              <li>
+                <strong>Pearson Correlation (r):</strong> วัดระดับและทิศทางความสัมพันธ์เชิงเส้น (-1 ถึง +1)
+              </li>
+              <li>
+                <strong>Simple Linear Regression:</strong> สร้างสมการทำนาย ŷ = b₀ + b₁x ด้วยวิธีกำลังสองน้อยที่สุด
+              </li>
+              <li>
+                <strong>Multiple Regression:</strong> วิเคราะห์การถดถอยเมื่อมีตัวแปรอิสระ (X) มากกว่าหนึ่งตัว
+              </li>
+              <li>
+                <strong>Coefficient of Determination (R²):</strong> วัดสัดส่วนความผันแปรของ Y ที่อธิบายได้ด้วยโมเดล
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Access Section -->
+    <section class="quick-access-section">
+      <div class="container">
+        <div class="quick-access-box">
+          <div class="quick-access-header">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            <span>ทางลัดเข้าสู่ระบบบทเรียน (Quick Access)</span>
+          </div>
+          <div class="quick-access-links">
+            <a href="https://probability-statistics-study-dashbo.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>ANOVA &amp; Chi-square</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <a href="https://nonparametric-tests.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>Nonparametric Tests</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <a href="https://correlation-and-linear-regression.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+              <span>Correlation &amp; Regression</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="brand-row">
+          <div class="brand-icon small">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+          </div>
+          <span class="footer-title">Probability and Statistics - Final</span>
+        </div>
+        <div class="footer-sub">Academic Study Dashboard</div>
+        <p class="footer-desc">
+          ศูนย์กลางรวบรวมเนื้อหาและสื่อการสอนสถิติสำหรับบทเรียน ANOVA, Chi-square, Nonparametric Tests, Correlation และ Linear Regression
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <div class="footer-heading">บทเรียนทั้งหมด (Course Chapters)</div>
+        <ul class="footer-list">
+          <li>
+            <a href="https://probability-statistics-study-dashbo.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span>บทที่ 5 Part 2: ANOVA and Chi-square</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://nonparametric-tests.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span>บทที่ 6: Nonparametric Tests</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://correlation-and-linear-regression.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <span>บทที่ 7: Correlation and Regression</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <div>Built for Probability &amp; Statistics study and review.</div>
+      <div>Probability &amp; Statistics Final Portal</div>
+    </div>
+  </footer>
+</body>
+</html>
